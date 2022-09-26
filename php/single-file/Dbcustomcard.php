@@ -24,7 +24,7 @@ function DBcustomcard($deck, $replacePic, $originalPicCode, $name){
     <meta charset="utf-8"/>
     <title>DB custom card</title>
 </head>
-<body>
+<body style="background-color: black; color: white;">
 <form method="POST">
     <input type="text" placeholder="deck" id="deck" name="deck"><br>
     <input type="text" placeholder="pic" id="pic" name="pic"><br>
@@ -32,7 +32,7 @@ function DBcustomcard($deck, $replacePic, $originalPicCode, $name){
     <input type="text" placeholder="name" id="name" name="name"><br>
     <input type="submit" value="bewaren">
 </form>
-<div>
+<div style="padding-left: 30vw;">
     <?php
     if($_POST){
      DBcustomcard($_POST['deck'], $_POST['pic'], $_POST['piccode'], $_POST['name']);
