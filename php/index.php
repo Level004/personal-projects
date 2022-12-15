@@ -4,6 +4,7 @@ function createSingleFileNav()
     $links = [
         "Dbcustomcard",
         "Dbcustomglobal",
+        "fontScramble",
     ];
     foreach ($links as $link) {
         echo "<a href='single-file/{$link}.php'>$link</a> ";
