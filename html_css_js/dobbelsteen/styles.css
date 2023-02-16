@@ -1,0 +1,68 @@
+body {
+    background-color: #35654d;
+}
+
+#diceContainer h1 {
+    text-align: center;
+}
+
+#diceContainer {
+    height: 187px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#diceContainer img {
+    position: relative;
+    left: 40%;
+}
+
+table {
+    color: #333;
+    background: white;
+    border: 1px solid grey;
+    font-size: 12pt;
+    border-collapse: collapse;
+}
+
+table thead th,
+table tfoot th {
+    color: #777;
+    background: rgba(0, 0, 0, .1);
+}
+
+table caption {
+    padding: .5em;
+}
+
+table th,
+table td {
+    padding: .5em;
+    border: 1px solid lightgrey;
+    text-align: center;
+}
+
+#diceTable[visible="true"] {
+    padding-top: 70px;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    left: 802px;
+}
+
+#diceTable[visible="false"] {
+    display: none;
+}
+
+#diceTable img {
+    height: 33px;
+}
+
+#diceTable p {
+    width: 265px;
+}
+
+#mainContainer {
+    padding-top: 25vh;
+}
