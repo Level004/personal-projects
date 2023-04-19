@@ -10,7 +10,7 @@ class TodoController extends Controller
     public function update(Request $request)
     {
         $task = Todo::find($request->taskID);
-        $task->finshed = 1;
+        $task->finished = 1;
         $task->update();
 
         return redirect()->back()->with('message', 'task updated');

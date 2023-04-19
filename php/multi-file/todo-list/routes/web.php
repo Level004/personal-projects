@@ -22,4 +22,4 @@ Route::get('/todo', function () {
     return view('todo');
 });
 
-Route::post('/todo/update', [TodoController::class, 'update']);
+Route::post('/todo/update', 'TodoController@update');

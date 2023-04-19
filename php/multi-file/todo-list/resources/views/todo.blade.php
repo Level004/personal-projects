@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Todo List</title>
 
@@ -22,6 +23,12 @@
                         @if ($task->finished == 0)
                             <div class="task">
                                 <p>{{$task->task_to_do}}: {{$task->task_description}}</p>
+                                <form method="post" action="todo/update">
+                                    <input type="hidden" name="taskID" value={{$task->id}}>
+                                        <button type="submit">
+                                            finished!
+                                        </button>
+                                </form>
                             </div>
                         @endif
                     @endforeach
