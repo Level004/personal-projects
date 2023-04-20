@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
+    public function create(Request $request) {
+        Todo::create([
+            'task_to_do' => $request->taskName,
+            'task_description' => $request->taskDescription,
+            'finished' => 0,
+        ]);
+
+        return redirect()->back()->with('message', 'task added');
+    }
+
     public function update(Request $request)
     {
         $task = Todo::find($request->taskID);

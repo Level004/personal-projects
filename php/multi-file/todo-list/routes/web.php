@@ -23,3 +23,5 @@ Route::get('/todo', function () {
 });
 
 Route::post('/todo/update', [TodoController::class, 'update']);
+
+Route::post('/todo/create', [TodoController::class, 'create']);

@@ -11,12 +11,27 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles -->
-        
+
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-        
+
     </head>
     <body class="antialiased">
             <div class="mainContainer">
+                <div class="createTaskContainer">
+                    <form method="post" action="todo/create">
+                        <label for="taskName">
+                            Task Name:
+                            <input type="text" name="taskName">
+                        </label>
+                        <label for="taskDescription">
+                            Task Description:
+                            <input type="text" name="taskDescription">
+                        </label>
+                        <button type="submit">
+                            add
+                        </button>
+                    </form>
+                </div>
                 <div class="todoContainer">
                     <p>tasks that need to be done!</p>
                     @foreach(\App\Models\Todo::all() as $task)
