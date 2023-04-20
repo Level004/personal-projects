@@ -55,6 +55,12 @@
             @if ($task->finished == 1)
                 <div class="task">
                     <p>{{$task->task_to_do}}: {{$task->task_description}}</p>
+                    <form method="post" action="todo/delete">
+                        <input type="hidden" name="taskID" value={{$task->id}}>
+                        <button type="submit">
+                            remove
+                        </button>
+                    </form>
                 </div>
             @endif
         @endforeach

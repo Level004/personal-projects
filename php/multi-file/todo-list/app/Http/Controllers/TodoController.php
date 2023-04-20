@@ -17,6 +17,14 @@ class TodoController extends Controller
         return redirect()->back()->with('message', 'task added');
     }
 
+    public function delete(Request $request)
+    {
+        $task = Todo::find($request->taskID);
+        $task->delete();
+
+        return redirect()->back()->with('message', 'task deleted');
+    }
+
     public function update(Request $request)
     {
         $task = Todo::find($request->taskID);
