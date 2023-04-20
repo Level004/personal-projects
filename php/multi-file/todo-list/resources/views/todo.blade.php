@@ -22,11 +22,11 @@
         <form method="post" action="todo/create">
             <label for="taskName">
                 Task Name:
-                <input type="text" name="taskName">
+                <input type="text" name="taskName" required>
             </label>
             <label for="taskDescription">
                 Task Description:
-                <input type="text" name="taskDescription">
+                <input type="text" name="taskDescription" required>
             </label>
             <button type="submit">
                 add
