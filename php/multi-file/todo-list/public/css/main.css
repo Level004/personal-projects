@@ -1,4 +1,32 @@
-body {
+* {
     font-family: 'comic-sans', sans-serif;
-    
+}
+
+p {
+    margin: 5px 0 5px 0;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+}
+
+.task p {
+    padding-right: 5px;
+}
+
+.finishedContainer {
+    display: none;
+}
+
+.finishedContainer:has(div) {
+    display: block;
+}
+
+.todoContainer {
+    display: none;
+}
+
+.todoContainer:has(div) {
+    display: block;
 }
