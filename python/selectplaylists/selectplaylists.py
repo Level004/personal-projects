@@ -1,9 +1,23 @@
 import pyautogui
 import webbrowser
+import sys as platform
 
 # sets up the browser path and sets the url to the music player
 urL = 'https://music.youtube.com/library/songs'
-chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+
+try:
+    if platform == "linux" or platform == "linux2":
+        # linux
+        chromePath = "/usr/bin/google-chrome"
+    elif platform == "darwin":
+        # OS X
+        chromePath = "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+    elif platform == "win32":
+        # Windows...
+        chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+except Exception as e:
+    print("Error: ", e)
+
 webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chromePath))
 
 # opens up chrome and goes to the url
