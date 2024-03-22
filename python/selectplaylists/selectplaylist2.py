@@ -1,21 +1,23 @@
-from playwright.sync_api import sync_playwright
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
-# Initialize Playwright
-with sync_playwright() as p:
-    # Connect to the existing Chrome browser instance with remote debugging enabled
-    browser = p.chromium.connect_over_cdp(endpoint_url="http://localhost:9222")
+# Specify the URL of the Chrome DevTools Protocol server
+chrome_devtools_url = "http://localhost:9222"
 
-    # Open a new tab in the existing browser instance
-    context = browser.new_context()
-    page = context.new_page()
+# Specify the path to the Chrome driver executable
+chrome_driver_path = "C:/Users/guill/Documents/chromedriver-win64/chromedriver.exe"
 
-    # Perform tasks in the new tab
-    page.goto('https://www.google.com')
+# Create a Chrome service object with the specified URL and executable path
+chrome_service = Service(executable_path=chrome_driver_path)
 
-    # Keep the tab open for demonstration purposes
-    input("Press Enter to close the tab...")
+# Connect to the existing Chrome instance using the Chrome service
+browser = webdriver.Chrome(service=chrome_service)
 
-    # Close the context (tab)
-    context.close()
+# Now you can interact with the browser as needed
+browser.get('https://www.google.com')
 
-    # Note: The existing browser instance remains open unless explicitly closed
+# Keep the browser open for demonstration purposes
+input("Press Enter to close the browser...")
+
+# # Close the browser
+# browser.quit()
