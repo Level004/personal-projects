@@ -21,4 +21,9 @@ To get the ltuid and the ltoken you need to:
 
 
 # Select Playlists 
-an automated way for me to open up my playlists may not work for your set up
+an automated way for me to open up my playlists
+### this only works for chrome
+if you want to use it for yourself here is how:
+
+1. you have to launch chrome with this flag `chrome.exe --remote-debugging-port=9222`
+2. change the playlist name on line 117 to your desired playlist
