@@ -7,25 +7,21 @@ from sys import exit
 
 env = dotenv_values(".env")
 
+
 def get_current_download_speed():
     network_io_counters = psutil.net_io_counters()
     return network_io_counters.bytes_recv
 
-def is_connected():
-    # Check if any network interface is connected
-    interfaces = psutil.net_if_stats()
-    for interface, stats in interfaces.items():
-        if stats.isup:
-            return True
-    return False
 
 def reconnect_wifi():
     run(["netsh", "wlan", "disconnect"])
     run(["netsh", "wlan", "connect", f"{env['WIFI']}"])
 
+
 def close_browser():
     click(1895, 22)
     exit("Stopping browser")
+
 
 def main():
     last_total_bytes = 0
@@ -38,22 +34,23 @@ def main():
         last_total_bytes = current_bytes
 
         print(f"Download Speed: {download_speed_mbps:.2f} Mbps")
-        if download_speed_mbps < 19:
-            if is_connected():
+        if download_speed_mbps < 0.03:
+            print("Not fully connected, skipping....")
+        else:
+            if download_speed_mbps < 19:
                 print("Reconnecting to WiFi...")
                 reconnect_wifi()
                 above_threshold_count = 0
             else:
-                print("No connection detected. Skipping reconnection.")
-        else:
-            above_threshold_count += 1
-            if above_threshold_count >= 7:
-                print("Closing the browser...")
-                close_browser()
-                break
+                above_threshold_count += 1
+                if above_threshold_count >= 7:
+                    print("Closing the browser...")
+                    close_browser()
+                    break
 
         # time in seconds before it checks the download speed again
         sleep(int(env['TIME']))
+
 
 if __name__ == "__main__":
     main()
