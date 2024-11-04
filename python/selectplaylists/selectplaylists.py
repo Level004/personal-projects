@@ -37,11 +37,11 @@ while not page_loaded:
 # Execute JavaScript code to click on the element with id "play-button" inside the last child element
 click_play_button_script = """
     const retryInterval = setInterval(function() {
-        const parentElement = document.querySelector('#contents > ytmusic-responsive-list-item-renderer:nth-child(14)');
+        const parentElement = document.querySelector('#contents > ytmusic-responsive-list-item-renderer:first-child');
         if (parentElement) {
             console.log('Parent element found');
             clearInterval(retryInterval);
-            const playButton = parentElement.querySelector('#play-button');
+            const playButton = parentElement.querySelector('a');
             if (playButton) {
                 console.log('Play button found');
                 const initialUrl = window.location.href;
@@ -126,9 +126,9 @@ function startProcess() {
 
     function addToQueue() {
         console.log("Adding to queue");
-        document.querySelector('#button-shape > button > yt-touch-feedback-shape > div').click();
+        document.querySelector('ytmusic-play-button-renderer + ytmusic-menu-renderer #button-shape > button').click();
         setTimeout(function() {
-            document.querySelector('#items > ytmusic-menu-service-item-renderer:nth-child(2)').click();
+            document.querySelector('#items > ytmusic-menu-service-item-renderer:nth-child(3)').click();
         }, 1000);
     }
 }
