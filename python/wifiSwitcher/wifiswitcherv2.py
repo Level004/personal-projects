@@ -37,13 +37,13 @@ def main():
         if download_speed_mbps < 0.03:
             print("Not fully connected, skipping....")
         else:
-            if download_speed_mbps < 19:
+            if download_speed_mbps < 6:
                 print("Reconnecting to WiFi...")
                 reconnect_wifi()
                 above_threshold_count = 0
             else:
                 above_threshold_count += 1
-                if above_threshold_count >= 7:
+                if above_threshold_count >= int(env['CYCLE']):
                     print("Closing the browser...")
                     close_browser()
                     break
